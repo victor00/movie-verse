@@ -23,17 +23,20 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 
 - [X] Repositório no GitHub com Gitflow (Branches `master` e `develop`)
 - [ ] Uso de framework CSS (Bootstrap, Materialize, etc.)
-- [ ] Layout responsivo
+- [ ] Layout responsivo usando ou não algum framework CSS.
 - [ ] Conceito de componentes
+- [ ] Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
 - [ ] Data-binding (Interpolation, Property Binding, Event Binding, Two-Way Data Binding)
 - [ ] Passagem de dados via @Input ou @Output
-- [ ] Rotas
+- [ ] Rotas - Mapear componentes à rotas no módulo de rotas.
 - [ ] Navegação entre páginas por meio de rotas
 - [ ] Passagem de dados entre componentes via parâmetros de rotas
-- [ ] Validação de campos de formulário com REGEX
+- [ ] Validação de campos de formulário com REGEX e apresentar os erros.
+- [ ] Desabilitar o botão de submit enquanto o formulário está inválido.
 - [ ] Tratamento de requisições a API com Promises ou Observables
 - [ ] Cadastro de entidade no JSON Server
-- [ ] Uso de ngFor e ngIf
+- [ ] Uso de ngFor - Apresentar uma lista de dados com a diretiva estrutural ngFor
+- [ ] Usar a diretiva ngIf
 - [ ] Formatação de dados com Pipes
 - [ ] Build e Deploy
 
