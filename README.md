@@ -47,7 +47,7 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 
 \`\`\`bash
 # Clone este repositório
-git clone [URL_DO_REPOSITÓRIO]
+git clone git@github.com:victor00/movie-verse.git
 
 # Entre no diretório
 cd movie-verse
