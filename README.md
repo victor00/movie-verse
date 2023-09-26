@@ -59,6 +59,6 @@ npm install
 ng serve
 ```
 
-## Uso
+## Uso (Porta sujeita ao seu critério de qual utilizar -> lembre-se de verificar nas configurações)
 
-Abra seu navegador e visite \`http://localhost:4200/\`
+Abra seu navegador e visite http://localhost:4200/
