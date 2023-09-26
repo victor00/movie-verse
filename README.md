@@ -45,7 +45,7 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 
 ## Instalação
 
-\`\`\`bash
+```bash
 # Clone este repositório
 git clone git@github.com:victor00/movie-verse.git
 
@@ -57,7 +57,7 @@ npm install
 
 # Execute a aplicação
 ng serve
-\`\`\`
+```
 
 ## Uso
 
