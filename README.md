@@ -21,7 +21,7 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 
 ## Checklist do Projeto
 
-- [X] Repositório no GitHub com Gitflow (Branches `main` e `develop`)
+- [X] Repositório no GitHub com Gitflow (Branches `master` e `develop`)
 - [ ] Uso de framework CSS (Bootstrap, Materialize, etc.)
 - [ ] Layout responsivo
 - [ ] Conceito de componentes
