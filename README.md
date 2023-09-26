@@ -21,21 +21,21 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 
 ## Checklist do Projeto
 
-- [x] Repositório no GitHub com Gitflow (Branches `main` e `develop`)
-- [x] Uso de framework CSS (Bootstrap, Materialize, etc.)
-- [x] Layout responsivo
-- [x] Conceito de componentes
-- [x] Data-binding (Interpolation, Property Binding, Event Binding, Two-Way Data Binding)
-- [x] Passagem de dados via @Input ou @Output
-- [x] Rotas
-- [x] Navegação entre páginas por meio de rotas
-- [x] Passagem de dados entre componentes via parâmetros de rotas
-- [x] Validação de campos de formulário com REGEX
-- [x] Tratamento de requisições a API com Promises ou Observables
-- [x] Cadastro de entidade no JSON Server
-- [x] Uso de ngFor e ngIf
-- [x] Formatação de dados com Pipes
-- [x] Build e Deploy
+- [X] Repositório no GitHub com Gitflow (Branches `main` e `develop`)
+- [ ] Uso de framework CSS (Bootstrap, Materialize, etc.)
+- [ ] Layout responsivo
+- [ ] Conceito de componentes
+- [ ] Data-binding (Interpolation, Property Binding, Event Binding, Two-Way Data Binding)
+- [ ] Passagem de dados via @Input ou @Output
+- [ ] Rotas
+- [ ] Navegação entre páginas por meio de rotas
+- [ ] Passagem de dados entre componentes via parâmetros de rotas
+- [ ] Validação de campos de formulário com REGEX
+- [ ] Tratamento de requisições a API com Promises ou Observables
+- [ ] Cadastro de entidade no JSON Server
+- [ ] Uso de ngFor e ngIf
+- [ ] Formatação de dados com Pipes
+- [ ] Build e Deploy
 
 ## Tecnologias
 
