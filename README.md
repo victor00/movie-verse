@@ -66,7 +66,6 @@ ng serve
 
 Abra seu navegador e visite http://localhost:4200/
 
-
 # MovieVerse
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
