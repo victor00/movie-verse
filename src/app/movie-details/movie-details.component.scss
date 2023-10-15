@@ -21,11 +21,13 @@
 }
 
 .card-content {
+  font-size: 1.2rem;
   p {
     font-weight: bold;
+    padding: 3px;
   }
   span {
-    font-weight: 500;
+    font-weight: 600;
     color: orange;
   }
 }
@@ -36,8 +38,64 @@
   right: 10px;
   display: flex;
   gap: 10px;
+  transition: background-color 0.3s;
 
   .halfway-fab-custom {
     margin-bottom: 0 !important;
+  }
+
+  .btn-floating i {
+    &:hover {
+      background-color: white;
+      color: red;
+    }
+  }
+}
+
+.star-vote-average,
+.original-language {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
+}
+
+.star-vote-average {
+  i {
+    color: #f5c518;
+  }
+}
+
+.card-image {
+  position: relative;
+}
+
+.bookmark-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+  .bookmark-btn {
+    display: inline-block;
+    color: lightgray;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    vertical-align: middle;
+
+    i {
+      font-size: 3rem;
+    }
+
+    &:hover {
+      color: gray;
+    }
   }
 }
