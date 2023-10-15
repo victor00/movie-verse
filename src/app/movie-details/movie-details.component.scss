@@ -1,0 +1,43 @@
+.card-title {
+  font-weight: bolder;
+  font-size: 0.7rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+}
+
+.truncate-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-width 0.3s ease-in-out;
+
+  &:hover {
+    max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
+.card-content {
+  p {
+    font-weight: bold;
+  }
+  span {
+    font-weight: 500;
+    color: orange;
+  }
+}
+
+.fab-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+
+  .halfway-fab-custom {
+    margin-bottom: 0 !important;
+  }
+}

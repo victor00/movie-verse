@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~materialize-css/dist/css/materialize.min.css';
+@import '~material-icons/iconfont/material-icons.css';
+
+
+/* Para o título do aplicativo */
+.app-title {
+  font-family: 'Londrina Solid', cursive;
+}
+
+/* Para os títulos dos filmes */
+.movie-title {
+  font-family: 'Enriqueta', serif;
+}
+
+/* Para os textos */
+.general-text {
+  font-family: 'Archivo', sans-serif;
+}

@@ -1,0 +1,36 @@
+<div *ngIf="movie && movie.poster_path && movie.overview">
+  <div class="card">
+    <div class="card-image">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        alt="{{ movie.title }}"
+      />
+      <div class="fab-container">
+        <a class="btn-floating halfway-fab-custom waves-effect waves-light red">
+          <i class="material-icons">favorite_border</i>
+        </a>
+        <a class="btn-floating halfway-fab-custom waves-effect waves-light red">
+          <i class="material-icons">add</i>
+        </a>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <p class="card-title truncate-title" title="{{ movie.title }}">
+        {{ movie.title }}
+      </p>
+      <p>
+        Year:
+        <span>{{ movie.release_date }}</span>
+      </p>
+      <p>
+        Original language:
+        <span>{{ movie.original_language }}</span>
+      </p>
+      <p>
+        Vote average:
+        <span>{{ movie.vote_average }}</span>
+      </p>
+    </div>
+  </div>
+</div>
