@@ -22,12 +22,12 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 ## Checklist do Projeto
 
 - [X] Repositório no GitHub com Gitflow (Branches `master` e `develop`)
-- [ ] Uso de framework CSS (Bootstrap, Materialize, etc.)
-- [ ] Layout responsivo usando ou não algum framework CSS.
-- [ ] Conceito de componentes
+- [X] Uso de framework CSS (Bootstrap, Materialize, etc.)
+- [X] Layout responsivo usando ou não algum framework CSS.
+- [X] Conceito de componentes
 - [ ] Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
 - [ ] Data-binding (Interpolation, Property Binding, Event Binding, Two-Way Data Binding)
-- [ ] Passagem de dados via @Input ou @Output
+- [X] Passagem de dados via @Input ou @Output
 - [ ] Rotas - Mapear componentes à rotas no módulo de rotas.
 - [ ] Navegação entre páginas por meio de rotas
 - [ ] Passagem de dados entre componentes via parâmetros de rotas
