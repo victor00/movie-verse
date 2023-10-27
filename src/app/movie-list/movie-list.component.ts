@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Movie } from 'src/app/model/movie.model';
-
 import axios from 'axios';
-
 
 @Component({
   selector: 'app-movie-list',
