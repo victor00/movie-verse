@@ -5,18 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMaskModule.forRoot()
   ],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

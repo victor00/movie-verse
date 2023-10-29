@@ -18,24 +18,22 @@
       </div>
     </div>
 
-    <div class="card-content">
-      <p class="card-title truncate-title" title="{{ movie.title }}">
+    <div class="card-content general-text black">
+      <p class="card-title truncate-title movie-title" title="{{ movie.title }}">
         {{ movie.title }}
       </p>
       <p class="release-date">
-        Date:
+        <i class="material-icons">date_range</i>
         <span>{{ formatBrazilianDate(movie.release_date) }}</span>
       </p>
       <p class="original-language">
         <i class="material-icons">language</i>
-
         <span>{{ movie.original_language.toUpperCase() }}</span>
       </p>
 
       <p class="star-vote-average">
         <i class="material-icons">star</i>
-
-        <span>{{ movie.vote_average }}</span>
+        <span>{{ formatStarAverageValue(movie.vote_average) }}</span>
       </p>
     </div>
   </div>

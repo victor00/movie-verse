@@ -1,8 +1,8 @@
 .card-title {
   font-weight: bolder;
-  font-size: 0.7rem;
+  font-size: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(130, 128, 128, 0.884);
   color: white;
   text-align: center;
 }
@@ -21,14 +21,14 @@
 }
 
 .card-content {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   p {
     font-weight: bold;
     padding: 3px;
   }
   span {
-    font-weight: 600;
-    color: orange;
+    font-weight: 400;
+    color: whitesmoke;
   }
 }
 
@@ -53,11 +53,13 @@
 }
 
 .star-vote-average,
-.original-language {
+.original-language,
+.release-date {
   display: flex;
   align-items: center;
   text-align: center;
   gap: 0.3rem;
+  color: white;
 }
 
 .star-vote-average {
