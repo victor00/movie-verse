@@ -7,6 +7,9 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [  ],
   bootstrap: [AppComponent]

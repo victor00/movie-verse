@@ -16,4 +16,8 @@ export class MovieDetailsComponent {
 
     return formattedDate;
   }
+
+  formatStarAverageValue(value: number): number {
+    return Math.round(value * 10) / 10;
+  }
 }
