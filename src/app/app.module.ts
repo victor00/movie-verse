@@ -7,7 +7,11 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { PopularComponent } from './popular/popular.component';
+import { MoviesComponent } from './movies/movies.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { WatchlistComponent } from './watchlist/watchlist.component'
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -18,7 +22,11 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     MovieListComponent,
     MovieDetailsComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    PopularComponent,
+    MoviesComponent,
+    FavoritesComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
