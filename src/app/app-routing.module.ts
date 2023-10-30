@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'movies/popular', component: MovieListComponent },
   { path: 'movies/favorites', component: MovieListComponent },
-  { path: '', redirectTo: '/popular', pathMatch: 'full' } // redirect to popular as default
+  { path: '', redirectTo: 'movies/popular', pathMatch: 'full' } // redirect to popular as default
 ];
 
 @NgModule({
