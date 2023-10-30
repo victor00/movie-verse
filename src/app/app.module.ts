@@ -8,6 +8,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -19,6 +20,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     MovieDetailsComponent,
     NavbarComponent,
     FooterComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
