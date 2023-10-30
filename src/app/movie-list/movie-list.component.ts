@@ -10,6 +10,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MovieListComponent implements OnInit {
   movies: Movie[] = [];
+  currentPage: number = 1;
+  totalPages: number = 0;
+
+  private categoryLoadFunctions: { [key: string]: (page: number) => Promise<void> } = {
+    popular: (page: number) => this.loadPopularMovies(page),
+    favorites: (page: number) => this.loadFavoriteMovies(page),
+    watchlist: (page: number) => this.loadWatchlistMovies(page),
+    trending: (page: number) => this.loadTrendingMovies(page),
+    topRated: (page: number) => this.loadTopRatedMovies(page),
+  };
+
+
+  currentCategory: string = '';
+  lastCategory: string = '';
 
 
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
@@ -17,40 +31,50 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log('Params:', params);
-      const category = params['category'];
-      this.loadMovies(category);
+      console.log('Route params:', params);
+      if (params['category']) {
+        this.currentCategory = params['category'];
+        this.loadMovies(this.currentCategory);
+      }
     });
-
   }
 
-  async loadMovies(category: string) {
+  async loadMovies(category: string, page: number = 1) {
+    const loadFunction = this.categoryLoadFunctions[category];
 
-    console.log(category)
-    switch (category) {
-      case 'popular':
-        await this.loadPopularMovies();
-        break;
-      case 'favorites':
-        await this.loadFavoriteMovies();
-        break;
-      // ...
-      default:
-        console.error('Unknown category:', category);
+    if (loadFunction) {
+      await loadFunction(page);
+    } else {
+      console.error('Unknown category:', category);
     }
   }
 
-
-  async loadPopularMovies() {
-    this.genericLoadMovies('movie/popular', { language: 'en-US', page: 1 });
+  async loadPopularMovies(page: number) {
+    this.genericLoadMovies('movie/popular', page, { language: 'en-US' });
   }
 
-  async loadFavoriteMovies() {
-    // lógica para carregar filmes favoritos
+  async loadTrendingMovies(page: number) {
+    this.genericLoadMovies('trending/movie/day', page, { language: 'en-US' });
   }
 
+  async loadTopRatedMovies(page: number) {
+    this.genericLoadMovies('movie/top_rated', page, { language: 'en-US' });
+  }
 
-  private async genericLoadMovies(url: string, queryParams: any = {}) {
-    this.movies = await this.tmdbService.getMovies(url, queryParams);
+  async loadFavoriteMovies(page: number) {
+    // trending/movie/day?language=en-US'
+    //this.genericLoadMovies('trending/movie/day', { language: 'en-US'});
+
+  }
+
+  async loadWatchlistMovies(page: number) {
+
+  }
+
+  private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
+    const response = await this.tmdbService.getMovies(url, { page, ...queryParams });
+    this.movies = response.results;
+    this.currentPage = response.page;
+    this.totalPages = response.total_pages;
   }
 }

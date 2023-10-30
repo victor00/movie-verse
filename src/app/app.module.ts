@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PaginationComponent } from './pagination/pagination.component';
+
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
 
@@ -21,6 +23,8 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     NavbarComponent,
     FooterComponent,
     PageNotFoundComponent,
+    PaginationComponent,
+
   ],
   imports: [
     BrowserModule,

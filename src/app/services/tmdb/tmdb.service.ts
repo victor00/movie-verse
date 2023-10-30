@@ -17,8 +17,7 @@ export class TmdbService {
           api_key: environment.tmdbApiKey,
         }
       });
-
-      return response.data.results;
+      return response.data;
     } catch (error) {
       console.error("API tmdb error: " + error)
       throw error;
