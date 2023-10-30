@@ -5,6 +5,7 @@
         [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
         alt="{{ movie.title }}"
       />
+
       <div class="bookmark-container">
         <a class="bookmark-btn">
           <i class="material-icons book-add-icons">bookmark_border</i>
@@ -16,13 +17,14 @@
           <i class="material-icons">favorite_border</i>
         </a>
       </div>
+
     </div>
 
     <div class="card-content general-text black">
       <p class="card-title truncate-title movie-title" title="{{ movie.title }}">
         {{ movie.title }}
       </p>
-      <p class="release-date">
+      <p class="release-date mt-5">
         <i class="material-icons">date_range</i>
         <span>{{ formatBrazilianDate(movie.release_date) }}</span>
       </p>
