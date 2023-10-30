@@ -2,11 +2,12 @@
   <div class="col s12 m3" *ngFor="let movie of movies">
     <app-movie-details [movie]="movie"></app-movie-details>
   </div>
-  <div *ngIf="totalPages > 1 && movies.length == 20" class="pagination">
-    <app-pagination
-      [currentPage]="currentPage"
-      [totalPages]="totalPages"
-      (pageChange)="loadMovies(currentCategory, $event)">
-    </app-pagination>
-  </div>
+</div>
+
+<div *ngIf="totalPages > 1" class="pagination">
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="loadMovies(currentCategory, $event)">
+  </app-pagination>
 </div>

@@ -21,6 +21,8 @@
 }
 
 .card-content {
+  overflow: auto;
+
   font-size: 0.8rem;
   p {
     font-weight: bold;
@@ -70,6 +72,7 @@
 
 .card-image {
   position: relative;
+  object-fit: cover;
 }
 
 .bookmark-container {
