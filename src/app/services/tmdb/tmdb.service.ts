@@ -23,4 +23,37 @@ export class TmdbService {
       throw error;
     }
   }
+
+  async getMovie(movieId: number) {
+    try {
+      const response = await axios.get(`${environment.baseApiUrl}movie/${movieId}`, {
+        params: {
+          api_key: environment.tmdbApiKey,
+          language: 'en-US'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("API tmdb error: " + error);
+      throw error;
+    }
+  }
+
+  async searchMovie(query: string, page: number = 1) {
+    try {
+      const response = await axios.get(`${environment.baseApiUrl}search/movie`, {
+        params: {
+          query,
+          page,
+          api_key: environment.tmdbApiKey,
+          language: 'en-US',
+          include_adult: false
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error("API tmdb error: " + error);
+      throw error;
+    }
+  }
 }

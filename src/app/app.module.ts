@@ -11,6 +11,9 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
@@ -26,11 +29,13 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     PageNotFoundComponent,
     PaginationComponent,
     MovieCardComponent,
+    SearchComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NgxMaskModule.forRoot()
   ],
   providers: [  ],

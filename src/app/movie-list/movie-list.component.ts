@@ -1,14 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
 import { TmdbService } from '../services/tmdb/tmdb.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SearchComponent } from '../search/search.component';
+
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent {
+  @ViewChild(SearchComponent) searchComponent!: SearchComponent;
+
   movies: Movie[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
@@ -21,10 +25,7 @@ export class MovieListComponent implements OnInit {
     topRated: (page: number) => this.loadTopRatedMovies(page),
   };
 
-
   currentCategory: string = '';
-  lastCategory: string = '';
-
 
   constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
 
@@ -37,6 +38,18 @@ export class MovieListComponent implements OnInit {
         this.loadMovies(this.currentCategory);
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.searchComponent.searchResults.subscribe(results => {
+      this.handleSearchResults(results);
+    });
+  }
+
+  handleSearchResults(results: any) {
+    this.movies = results.results;
+    this.currentPage = results.page;
+    this.totalPages = results.total_pages;
   }
 
   async loadMovies(category: string, page: number = 1) {
@@ -62,9 +75,6 @@ export class MovieListComponent implements OnInit {
   }
 
   async loadFavoriteMovies(page: number) {
-    // trending/movie/day?language=en-US'
-    //this.genericLoadMovies('trending/movie/day', { language: 'en-US'});
-
   }
 
   async loadWatchlistMovies(page: number) {
