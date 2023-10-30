@@ -1,0 +1,13 @@
+<ul class="pagination">
+  <li [class.disabled]="currentPage === 1">
+    <a (click)="decrementPage()">
+      <i class="material-icons">chevron_left</i>
+    </a>
+  </li>
+  <li class="active"><a>{{currentPage}}</a></li>
+  <li [class.disabled]="currentPage === totalPages">
+    <a (click)="incrementPage()">
+      <i class="material-icons">chevron_right</i>
+    </a>
+  </li>
+</ul>

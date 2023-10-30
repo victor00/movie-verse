@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
-import axios from 'axios';
+import { TmdbService } from '../services/tmdb/tmdb.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchComponent } from '../search/search.component';
+
 
 @Component({
   selector: 'app-movie-list',
@@ -9,19 +11,80 @@ import axios from 'axios';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
+  @ViewChild(SearchComponent) searchComponent!: SearchComponent;
+
   movies: Movie[] = [];
+  currentPage: number = 1;
+  totalPages: number = 0;
+
+  private categoryLoadFunctions: { [key: string]: (page: number) => Promise<void> } = {
+    popular: (page: number) => this.loadPopularMovies(page),
+    favorites: (page: number) => this.loadFavoriteMovies(page),
+    watchlist: (page: number) => this.loadWatchlistMovies(page),
+    trending: (page: number) => this.loadTrendingMovies(page),
+    topRated: (page: number) => this.loadTopRatedMovies(page),
+  };
+
+  currentCategory: string = '';
+
+  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
 
 
-  async ngOnInit() {
-    try {
-      const response = await axios.get(`${environment.baseApiUrl}movie/popular?language=en-US&page=1`, {
-        params: {
-          api_key: environment.tmdbApiKey,
-        }
-      });
-      this.movies = response.data.results;
-    } catch (error) {
-      console.error('There was an error!', error);
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      console.log('Route params:', params);
+      if (params['category']) {
+        this.currentCategory = params['category'];
+        this.loadMovies(this.currentCategory);
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.searchComponent.searchResults.subscribe(results => {
+      this.handleSearchResults(results);
+    });
+  }
+
+  handleSearchResults(results: any) {
+    this.movies = results.results;
+    this.currentPage = results.page;
+    this.totalPages = results.total_pages;
+  }
+
+  async loadMovies(category: string, page: number = 1) {
+    const loadFunction = this.categoryLoadFunctions[category];
+
+    if (loadFunction) {
+      await loadFunction(page);
+    } else {
+      console.error('Unknown category:', category);
     }
+  }
+
+  async loadPopularMovies(page: number) {
+    this.genericLoadMovies('movie/popular', page, { language: 'en-US' });
+  }
+
+  async loadTrendingMovies(page: number) {
+    this.genericLoadMovies('trending/movie/day', page, { language: 'en-US' });
+  }
+
+  async loadTopRatedMovies(page: number) {
+    this.genericLoadMovies('movie/top_rated', page, { language: 'en-US' });
+  }
+
+  async loadFavoriteMovies(page: number) {
+  }
+
+  async loadWatchlistMovies(page: number) {
+
+  }
+
+  private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
+    const response = await this.tmdbService.getMovies(url, { page, ...queryParams });
+    this.movies = response.results;
+    this.currentPage = response.page;
+    this.totalPages = response.total_pages;
   }
 }

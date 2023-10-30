@@ -1,23 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~materialize-css/dist/css/materialize.min.css';
-@import '~material-icons/iconfont/material-icons.css';
-
+@import "~materialize-css/dist/css/materialize.min.css";
+@import "~material-icons/iconfont/material-icons.css";
 
 /* Para o título do aplicativo */
 .app-title {
-  font-family: 'Londrina Solid', cursive;
+  font-family: "Londrina Solid", cursive;
 }
 
 /* Para os títulos dos filmes */
 .movie-title {
-  font-family: 'Gabarito', sans-serif;
+  font-family: "Gabarito", sans-serif;
 }
 
 /* Para os textos */
 .general-text {
-  font-family: 'Archivo', sans-serif;
+  font-family: "Archivo", sans-serif;
 }
 
+
+
 body {
-  background-color: lightgray;
+  background: #1F1C2C;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #928DAB, #1F1C2C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

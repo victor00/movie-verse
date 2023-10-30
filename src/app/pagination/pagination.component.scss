@@ -1,0 +1,19 @@
+.pagination {
+  li a {
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+
+  i {
+    color: orange;
+  }
+
+  .active {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-weight: bolder;
+  }
+}

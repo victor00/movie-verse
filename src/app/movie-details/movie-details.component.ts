@@ -1,23 +1,26 @@
-import { Component, Input } from '@angular/core';
-import { Movie } from 'src/app/model/movie.model';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TmdbService } from '../services/tmdb/tmdb.service';
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss'],
 })
-export class MovieDetailsComponent {
-  @Input() movie!: Movie;
+export class MovieDetailsComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    private tmdbService: TmdbService
+  ) { }
 
-  formatBrazilianDate(date: string): string {
-    const newDate = new Date(date);
-    const formatter = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short' });
-    const formattedDate = formatter.format(newDate);
-
-    return formattedDate;
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.loadMovie(params['id']);
+      }
+    });
   }
 
-  formatStarAverageValue(value: number): number {
-    return Math.round(value * 10) / 10;
+  async loadMovie(id: string) {
+    //this.movie = await this.tmdbService.getMovie(id);
   }
 }
