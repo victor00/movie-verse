@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { Movie } from 'src/app/model/movie.model';
-import axios from 'axios';
+import { TmdbService } from '../services/tmdb/tmdb.service';
+
 
 @Component({
   selector: 'app-movie-list',
@@ -11,15 +11,11 @@ import axios from 'axios';
 export class MovieListComponent {
   movies: Movie[] = [];
 
+  constructor(private tmdbService: TmdbService) { }
 
   async ngOnInit() {
     try {
-      const response = await axios.get(`${environment.baseApiUrl}movie/popular?language=en-US&page=1`, {
-        params: {
-          api_key: environment.tmdbApiKey,
-        }
-      });
-      this.movies = response.data.results;
+      this.movies = await this.tmdbService.getMovies('movie/popular', { language: 'en-US', page: 1 });
     } catch (error) {
       console.error('There was an error!', error);
     }
