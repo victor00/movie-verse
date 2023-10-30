@@ -62,13 +62,15 @@ npm install
 ng serve
 ```
 
-## Uso (Porta sujeita ao seu critério de qual utilizar -> lembre-se de verificar nas configurações)
-
+## Uso
+-  (Porta sujeita ao seu critério de qual utilizar -> lembre-se de verificar nas configurações)
 Abra seu navegador e visite http://localhost:4200/
 
 # MovieVerse
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+- O Projeto tem dependência com API do TMDB, para sua utilização é necessário uma API_KEY
+https://www.themoviedb.org/
 
 ## Development server
 
