@@ -12,7 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PaginationComponent } from './pagination/pagination.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MovieFormComponent } from './movie-form/movie-form.component';
 
 
 
@@ -30,12 +31,14 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     PaginationComponent,
     MovieCardComponent,
     SearchComponent,
+    MovieFormComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule.forRoot()
   ],
   providers: [  ],

@@ -3,6 +3,8 @@ import { Movie } from 'src/app/model/movie.model';
 import { TmdbService } from '../services/tmdb/tmdb.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
+import { MovieCrudService } from '../services/movie/movie-crud.service';
+
 
 
 @Component({
@@ -27,12 +29,13 @@ export class MovieListComponent {
 
   currentCategory: string = '';
 
-  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private tmdbService: TmdbService,
+    private route: ActivatedRoute, private router: Router,
+    private movieCrudService: MovieCrudService) { }
 
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log('Route params:', params);
       if (params['category']) {
         this.currentCategory = params['category'];
         this.loadMovies(this.currentCategory);
@@ -75,10 +78,35 @@ export class MovieListComponent {
   }
 
   async loadFavoriteMovies(page: number) {
+    this.movies = this.movieCrudService.getFavorites();
   }
 
   async loadWatchlistMovies(page: number) {
+    this.movies = this.movieCrudService.getWatchlist();
+  }
 
+  async handleFavoriteUpdate(movie: Movie) {
+    if (this.movieCrudService.isInFavorites(movie)) {
+      this.movieCrudService.removeFromFavorites(movie);
+    } else {
+      this.movieCrudService.addToFavorites(movie);
+    }
+
+    if (this.router.url === "/movies/favorites") {
+      this.movies = this.movieCrudService.getFavorites();
+    }
+  }
+
+  async handleWatchlistUpdate(movie: Movie) {
+    if (this.movieCrudService.isInWatchlist(movie)) {
+      this.movieCrudService.removeFromWatchlist(movie);
+    } else {
+      this.movieCrudService.addToWatchlist(movie);
+    }
+
+    if (this.router.url === "/movies/watchlist") {
+      this.movies = this.movieCrudService.getWatchlist();
+    }
   }
 
   private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {

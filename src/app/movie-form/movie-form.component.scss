@@ -1,0 +1,24 @@
+.garbage-icon {
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    color:  red;
+    transform: scale(1.2);
+  }
+}
+
+.text-white {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.movie-list-container {
+  margin-top: 3rem;
+}
+
+.error {
+  color: red;
+}

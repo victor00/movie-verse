@@ -1,8 +1,11 @@
-<div class="">
+
   <div class="row">
     <app-search></app-search>
     <div class="col s10 m3 center" *ngFor="let movie of movies">
-      <app-movie-card [movie]="movie"></app-movie-card>
+      <app-movie-card [movie]="movie"
+                (updateFavorites)="handleFavoriteUpdate(movie)"
+                (updateWatchlist)="handleWatchlistUpdate(movie)">
+      </app-movie-card>
     </div>
   </div>
 
@@ -14,4 +17,3 @@
     >
     </app-pagination>
   </div>
-</div>

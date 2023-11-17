@@ -1,0 +1,54 @@
+<div class="movie-form-container">
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Título:</label>
+      <input type="text" id="title" formControlName="title">
+      <div *ngIf="movieForm.get('title')?.invalid && movieForm.get('title')?.touched">
+        <span class="error">Título é obrigatório.</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="release_date">Data de lançamento:</label>
+      <input type="text" id="release_date" formControlName="release_date" mask="00/00/0000">
+      <div *ngIf="movieForm.get('release_date')?.invalid && movieForm.get('release_date')?.touched">
+        <span class="error">Data de lançamento inválida ou obrigatória.</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="vote_average">Nota:</label>
+      <input type="number" id="vote_average" formControlName="vote_average" mask="99" [dropSpecialCharacters]="false">
+      <div *ngIf="movieForm.get('vote_average')?.invalid && movieForm.get('vote_average')?.touched">
+        <span class="error" *ngIf="movieForm.get('vote_average')?.errors?.['required']">Nota média é obrigatória.</span>
+        <span class="error" *ngIf="movieForm.get('vote_average')?.errors?.['min'] || movieForm.get('vote_average')?.errors?.['max']">Nota deve ser entre 0 e 10.</span>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!movieForm.valid || submitted">Salvar Filme</button>
+  </form>
+</div>
+
+
+<div class="movie-list-container">
+  <table>
+    <thead>
+      <tr class="text-white">
+        <th>Título</th>
+        <th>Data de lançamento</th>
+        <th>Nota</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-white" *ngFor="let movie of movies">
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.release_date }}</td>
+        <td>{{ movie.vote_average }}</td>
+        <td>
+          <i class="material-icons garbage-icon" (click)="removeMovie(movie)">delete</i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
