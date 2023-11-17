@@ -44,7 +44,7 @@
       <tr class="text-white" *ngFor="let movie of movies">
         <td>{{ movie.title }}</td>
         <td>{{ movie.release_date }}</td>
-        <td>{{ movie.vote_average }}</td>
+        <td>{{ movie.vote_average | round }}</td>
         <td>
           <i class="material-icons garbage-icon" (click)="removeMovie(movie)">delete</i>
         </td>
