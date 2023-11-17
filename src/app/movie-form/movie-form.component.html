@@ -1,0 +1,36 @@
+<div class="movie-form-container">
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title">
+      <!-- Add validation error messages here -->
+    </div>
+    <div>
+      <label for="release_date">Release Date:</label>
+      <input type="text" id="release_date" formControlName="release_date">
+      <!-- Add validation error messages here -->
+    </div>
+    <!-- Add other fields similarly -->
+
+    <button type="submit" [disabled]="!movieForm.valid">Save Movie</button>
+  </form>
+</div>
+
+<div class="movie-list-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release Date</th>
+        <!-- Other column headers -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies">
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.release_date }}</td>
+        <!-- Other columns -->
+      </tr>
+    </tbody>
+  </table>
+</div>

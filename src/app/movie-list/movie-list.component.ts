@@ -85,6 +85,30 @@ export class MovieListComponent {
     this.movies = this.movieCrudService.getWatchlist();
   }
 
+  async handleFavoriteUpdate(movie: Movie) {
+    if (this.movieCrudService.isInFavorites(movie)) {
+      this.movieCrudService.removeFromFavorites(movie);
+    } else {
+      this.movieCrudService.addToFavorites(movie);
+    }
+
+    if (this.router.url === "/movies/favorites") {
+      this.movies = this.movieCrudService.getFavorites();
+    }
+  }
+
+  async handleWatchlistUpdate(movie: Movie) {
+    if (this.movieCrudService.isInWatchlist(movie)) {
+      this.movieCrudService.removeFromWatchlist(movie);
+    } else {
+      this.movieCrudService.addToWatchlist(movie);
+    }
+
+    if (this.router.url === "/movies/watchlist") {
+      this.movies = this.movieCrudService.getWatchlist();
+    }
+  }
+
   private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
     const response = await this.tmdbService.getMovies(url, { page, ...queryParams });
     this.movies = response.results;

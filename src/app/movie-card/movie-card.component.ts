@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
+  @Output() updateFavorites = new EventEmitter<Movie>();
+  @Output() updateWatchlist = new EventEmitter<Movie>();
 
   constructor(private movieCrudService: MovieCrudService, private router: Router,
     private route: ActivatedRoute) { }
@@ -29,28 +31,18 @@ export class MovieCardComponent {
 
 
   isInFavorites(movie: Movie): boolean {
-    const favorites = this.movieCrudService.getFavorites();
-    return favorites.some((favMovie: Movie) => favMovie.id === movie.id);
+    return this.movieCrudService.isInFavorites(movie);
   }
 
   isInWatchlist(movie: Movie): boolean {
-    const watchlist = this.movieCrudService.getWatchlist();
-    return watchlist.some((watchMovie: Movie) => watchMovie.id === movie.id);
+   return this.movieCrudService.isInWatchlist(movie);
   }
 
   toggleFavorites(movie: Movie) {
-    if (this.isInFavorites(movie)) {
-      this.movieCrudService.removeFromFavorites(movie);
-    } else {
-      this.movieCrudService.addToFavorites(movie);
-    }
+    this.updateFavorites.emit(movie);
   }
 
   toggleWatchlist(movie: Movie) {
-    if (this.isInWatchlist(movie)) {
-      this.movieCrudService.removeFromWatchlist(movie);
-    } else {
-      this.movieCrudService.addToWatchlist(movie);
-    }
+    this.updateWatchlist.emit(movie);
   }
 }
