@@ -110,9 +110,13 @@ export class MovieListComponent {
   }
 
   private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
-    const response = await this.tmdbService.getMovies(url, { page, ...queryParams });
-    this.movies = response.results;
-    this.currentPage = response.page;
-    this.totalPages = response.total_pages;
+    try {
+      const response = await this.tmdbService.getMovies(url, { page, ...queryParams });
+      this.movies = response.results;
+      this.currentPage = response.page;
+      this.totalPages = response.total_pages;
+    } catch (error) {
+      console.error("Error loading movies:", error);
+    }
   }
 }
