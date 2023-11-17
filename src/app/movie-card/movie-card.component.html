@@ -7,17 +7,33 @@
       />
 
       <div class="bookmark-container">
-        <a class="bookmark-btn" (click)="addMovieToWatchlist(movie)">
-          <i class="material-icons book-add-icons">bookmark_border</i>
+        <a class="bookmark-btn" (click)="toggleWatchlist(movie)">
+          <i
+            class="material-icons"
+            [ngClass]="{
+              'book-add-icons': !isInWatchlist(movie),
+              'book-remove-icons': isInWatchlist(movie)
+            }"
+          >
+            {{ isInWatchlist(movie) ? "bookmark" : "bookmark_border" }}
+          </i>
         </a>
       </div>
 
       <div class="fab-container">
         <a
           class="btn-floating halfway-fab-custom waves-effect waves-light red"
-          (click)="addMovieToFavorites(movie)"
+          (click)="toggleFavorites(movie)"
         >
-          <i class="material-icons">favorite_border</i>
+          <i
+            class="material-icons"
+            [ngClass]="{
+              'favorite-icons': !isInFavorites(movie),
+              'favorite-remove-icons': isInFavorites(movie)
+            }"
+          >
+            {{ isInFavorites(movie) ? "favorite" : "favorite_border" }}
+          </i>
         </a>
       </div>
     </div>

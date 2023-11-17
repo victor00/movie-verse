@@ -36,7 +36,6 @@ export class MovieListComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log('Route params:', params);
       if (params['category']) {
         this.currentCategory = params['category'];
         this.loadMovies(this.currentCategory);
@@ -84,6 +83,30 @@ export class MovieListComponent {
 
   async loadWatchlistMovies(page: number) {
     this.movies = this.movieCrudService.getWatchlist();
+  }
+
+  async handleFavoriteUpdate(movie: Movie) {
+    if (this.movieCrudService.isInFavorites(movie)) {
+      this.movieCrudService.removeFromFavorites(movie);
+    } else {
+      this.movieCrudService.addToFavorites(movie);
+    }
+
+    if (this.router.url === "/movies/favorites") {
+      this.movies = this.movieCrudService.getFavorites();
+    }
+  }
+
+  async handleWatchlistUpdate(movie: Movie) {
+    if (this.movieCrudService.isInWatchlist(movie)) {
+      this.movieCrudService.removeFromWatchlist(movie);
+    } else {
+      this.movieCrudService.addToWatchlist(movie);
+    }
+
+    if (this.router.url === "/movies/watchlist") {
+      this.movies = this.movieCrudService.getWatchlist();
+    }
   }
 
 

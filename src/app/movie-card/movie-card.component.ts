@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-movie-card',
@@ -9,9 +11,11 @@ import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
+  @Output() updateFavorites = new EventEmitter<Movie>();
+  @Output() updateWatchlist = new EventEmitter<Movie>();
 
-  constructor(private movieCrudService: MovieCrudService) { }
-
+  constructor(private movieCrudService: MovieCrudService, private router: Router,
+    private route: ActivatedRoute) { }
 
   formatBrazilianDate(date: string): string {
     const newDate = new Date(date);
@@ -26,11 +30,19 @@ export class MovieCardComponent {
   }
 
 
-  addMovieToFavorites(movie: any) {
-    this.movieCrudService.addToFavorites(movie);
+  isInFavorites(movie: Movie): boolean {
+    return this.movieCrudService.isInFavorites(movie);
   }
 
-  addMovieToWatchlist(movie: any) {
-    this.movieCrudService.addToWatchlist(movie);
+  isInWatchlist(movie: Movie): boolean {
+   return this.movieCrudService.isInWatchlist(movie);
+  }
+
+  toggleFavorites(movie: Movie) {
+    this.updateFavorites.emit(movie);
+  }
+
+  toggleWatchlist(movie: Movie) {
+    this.updateWatchlist.emit(movie);
   }
 }
