@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Movie } from 'src/app/model/movie.model';
 
 
@@ -7,8 +9,28 @@ import { Movie } from 'src/app/model/movie.model';
 })
 export class MovieCrudService {
 
-  constructor() { }
+  private jsonApiUrl = 'http://localhost:3000/movies';
 
+  constructor(private http: HttpClient) { }
+
+  // Atividade 11
+  addToMovies(movie: any): Observable<any> {
+    return this.http.post<any>(this.jsonApiUrl, movie);
+  }
+
+  // Remover um filme do JSON Server
+  removeFromMovies(movieId: number): Observable<void> {
+    const url = `${this.jsonApiUrl}/${movieId}`;
+    return this.http.delete<void>(url);
+  }
+
+  // Consultar todos os filmes no JSON Server
+  getAllMovies(): Observable<any[]> {
+    return this.http.get<any[]>(this.jsonApiUrl);
+  }
+
+
+  // Atividades antigas
   addToFavorites(movie: any) {
     let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     movie.id = this.getNextId();

@@ -14,6 +14,8 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieFormComponent } from './movie-form/movie-form.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -39,6 +41,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     NgxMaskModule.forRoot()
   ],
   providers: [  ],

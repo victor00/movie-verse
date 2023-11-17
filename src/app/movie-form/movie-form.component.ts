@@ -28,22 +28,26 @@ export class MovieFormComponent implements OnInit {
 
   onSubmit() {
     if (this.movieForm.valid) {
-      this.movieCrudService.addToFormMovies(this.movieForm.value);
-      this.loadMovies();
-      this.movieForm.reset();
-      this.submitted = true; // Set to true on submission
-      setTimeout(() => this.submitted = false, 3000); // Reset after 3 seconds
+      this.movieCrudService.addToMovies(this.movieForm.value).subscribe(() => {
+        this.loadMovies();
+        this.movieForm.reset();
+        this.submitted = true; // Set to true on submission
+        setTimeout(() => this.submitted = false, 3000); // Reset after 3 seconds
+      });
     }
   }
 
   loadMovies() {
-    this.movies = this.movieCrudService.getFormMovies();
+    this.movieCrudService.getAllMovies().subscribe((movies) => {
+      this.movies = movies;
+    });
   }
 
   removeMovie(movie: any) {
     if (confirm('Tem certeza que quer deletar esse filme?')) {
-      this.movieCrudService.removeFromFormMovies(movie);
-      this.loadMovies();
+      this.movieCrudService.removeFromMovies(movie.id).subscribe(() => {
+        this.loadMovies();
+      });
     }
   }
 }
