@@ -31,11 +31,12 @@ export class MovieCrudService {
 
 
   // Atividades antigas
-  addToFavorites(movie: any) {
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    movie.id = this.getNextId();
-    favorites.push(movie);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+  addToFavorites(movie: Movie) {
+    let favorites = this.getFavorites();
+    if (!favorites.some((fav: Movie) => fav.id === movie.id)) {
+      favorites.push(movie);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
   }
 
   removeFromFavorites(movie: any) {
@@ -44,11 +45,12 @@ export class MovieCrudService {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 
-  addToWatchlist(movie: any) {
-    let watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
-    movie.id = this.getNextId();
-    watchlist.push(movie);
-    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  addToWatchlist(movie: Movie) {
+    let watchlist = this.getWatchlist();
+    if (!watchlist.some((watch: Movie) => watch.id === movie.id)) {
+      watchlist.push(movie);
+      localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    }
   }
 
   removeFromWatchlist(movie: any) {
