@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+
 import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 
 @Component({
@@ -9,29 +10,40 @@ import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 })
 export class MovieFormComponent implements OnInit {
   movieForm!: FormGroup;
-  movies: any[] = [];  // Array to store movies
+  movies: any[] = [];
+  submitted = false;
 
   constructor(private fb: FormBuilder, private movieCrudService: MovieCrudService) { }
+
 
   ngOnInit(): void {
     this.movieForm = this.fb.group({
       title: ['', Validators.required],
-      release_date: ['', [Validators.required, Validators.pattern(/your-regex-here/)]],
-      // ... other fields
+      release_date: ['', [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)]], // regex for DD/MM/YYYY
+      vote_average: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
     });
 
-    this.loadMovies(); // Load movies when component initializes
+    this.loadMovies();
   }
 
   onSubmit() {
     if (this.movieForm.valid) {
-      this.movieCrudService.addToFavorites(this.movieForm.value); // Save movie
-      this.loadMovies(); // Reload movies to update the list
-      this.movieForm.reset(); // Optional: Reset form after submission
+      this.movieCrudService.addToFormMovies(this.movieForm.value);
+      this.loadMovies();
+      this.movieForm.reset();
+      this.submitted = true; // Set to true on submission
+      setTimeout(() => this.submitted = false, 3000); // Reset after 3 seconds
     }
   }
 
   loadMovies() {
-    this.movies = this.movieCrudService.getFavorites(); // Fetch movies from service
+    this.movies = this.movieCrudService.getFormMovies();
+  }
+
+  removeMovie(movie: any) {
+    if (confirm('Tem certeza que quer deletar esse filme?')) {
+      this.movieCrudService.removeFromFormMovies(movie);
+      this.loadMovies();
+    }
   }
 }

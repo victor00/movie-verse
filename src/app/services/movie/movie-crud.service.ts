@@ -48,4 +48,20 @@ export class MovieCrudService {
     const watchlist = this.getWatchlist();
     return watchlist.some((watchMovie: any) => watchMovie.id === movie.id);
   }
+
+  addToFormMovies(movie: any) {
+    let formMovies = JSON.parse(localStorage.getItem('formMovies') || '[]');
+    formMovies.push(movie);
+    localStorage.setItem('formMovies', JSON.stringify(formMovies));
+  }
+
+  getFormMovies() {
+    return JSON.parse(localStorage.getItem('formMovies') || '[]');
+  }
+
+  removeFromFormMovies(movie: any) {
+    let formMovies = this.getFormMovies();
+    formMovies = formMovies.filter((formMovie: any) => formMovie.id !== movie.id);
+    localStorage.setItem('formMovies', JSON.stringify(formMovies));
+  }
 }
