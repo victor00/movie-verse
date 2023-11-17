@@ -101,3 +101,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - https://movie-verse-utfpr.netlify.app/movies/popular
 - É necessário rodar o JSON Server para o CreateMovie funcionar.
+  `json-server --watch movies.json`
