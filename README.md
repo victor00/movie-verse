@@ -30,10 +30,10 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 - [X] Passagem de dados via @Input ou @Output
 - [X] Rotas - Mapear componentes à rotas no módulo de rotas.
 - [X] Navegação entre páginas por meio de rotas
-- [ ] Passagem de dados entre componentes via parâmetros de rotas
+- [X] Passagem de dados entre componentes via parâmetros de rotas
 - [X] Validação de campos de formulário com REGEX e apresentar os erros.
 - [X] Desabilitar o botão de submit enquanto o formulário está inválido.
-- [ ] Tratamento de requisições a API com Promises ou Observables
+- [X] Tratamento de requisições a API com Promises ou Observables
 - [ ] Cadastro de entidade no JSON Server
 - [X] Uso de ngFor - Apresentar uma lista de dados com a diretiva estrutural ngFor
 - [X] Usar a diretiva ngIf
