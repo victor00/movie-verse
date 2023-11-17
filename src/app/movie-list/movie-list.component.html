@@ -1,6 +1,8 @@
 <div>
   <div class="row">
-    <app-search></app-search>
+    <div class="search" *ngIf="showSearch" >
+      <app-search></app-search>
+    </div>
     <div class="col s10 m3 center" *ngFor="let movie of movies">
       <app-movie-card
         [movie]="movie"

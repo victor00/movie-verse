@@ -17,6 +17,8 @@ export class MovieListComponent {
   currentPage: number = 1;
   totalPages: number = 0;
   showPagination = true;
+  showSearch = true;
+
 
   private categoryLoadFunctions: { [key: string]: (page: number) => Promise<void> } = {
     popular: (page: number) => this.loadPopularMovies(page),
@@ -79,11 +81,13 @@ export class MovieListComponent {
   async loadFavoriteMovies(page: number) {
     this.movies = await this.movieCrudService.getFavorites();
     this.showPagination = false;
+    this.showSearch = false;
   }
 
   async loadWatchlistMovies(page: number) {
     this.movies = await this.movieCrudService.getWatchlist();
     this.showPagination = false;
+    this.showSearch = false;
   }
 
   async handleFavoriteUpdate(movie: Movie) {
@@ -117,5 +121,6 @@ export class MovieListComponent {
     this.currentPage = response.page;
     this.totalPages = response.total_pages;
     this.showPagination = true;
+    this.showSearch = true;
   }
 }
