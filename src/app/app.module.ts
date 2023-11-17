@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RoundPipe } from './pipes/round.pipe';
 
 
 
@@ -34,6 +35,7 @@ export const options: Partial<null | IConfig> | (() => Partial<IConfig>) = null;
     MovieCardComponent,
     SearchComponent,
     MovieFormComponent,
+    RoundPipe,
 
   ],
   imports: [
