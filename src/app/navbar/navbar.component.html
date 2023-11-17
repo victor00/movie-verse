@@ -1,5 +1,6 @@
 <nav class="navbar black">
   <div class="nav-wrapper">
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <div class="brand-logo app-title">MovieVerse</div>
     <ul id="nav-mobile" class="right hide-on-med-and-down app-title">
       <li><a routerLink="/movies/popular" routerLinkActive="selected">Popular</a></li>
@@ -11,3 +12,15 @@
     </ul>
   </div>
 </nav>
+
+<ul class="sidenav black sidenav-custom sidenav-close" id="mobile-demo">
+
+  <div class="sidenav-items">
+    <li><a routerLink="/movies/popular" routerLinkActive="selected">Popular</a></li>
+    <li><a routerLink="/movies/trending" routerLinkActive="selected">Trending</a></li>
+    <li><a routerLink="/movies/topRated" routerLinkActive="selected">Top Rated</a></li>
+    <li><a routerLink="/movies/favorites" routerLinkActive="selected">Favorites</a></li>
+    <li><a routerLink="/movies/watchlist" routerLinkActive="selected">Watchlist</a></li>
+    <li><a routerLink="/create/movie" routerLinkActive="selected">Create your own movie</a></li>
+  </div>
+</ul>

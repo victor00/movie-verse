@@ -7,6 +7,40 @@
 }
 
 .selected {
-  color: orange;
+  color: orange !important;
   font-weight: bold;
+  text-decoration: underline;
 }
+
+.sidenav-custom {
+  width: 25%;
+}
+
+.sidenav-custom a {
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+    color: orange;
+  }
+}
+
+.sidenav-items {
+  margin-top: 3.5rem;
+
+  li a {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidenav-custom {
+    width: 50%; /* Ajuste a largura para 100% em telas menores */
+  }
+
+  .sidenav-items li a {
+    display: block; /* Faz com que cada link ocupe sua própria linha */
+    padding: 1rem;
+  }
+}
+
