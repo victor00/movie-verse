@@ -3,6 +3,8 @@ import { Movie } from 'src/app/model/movie.model';
 import { TmdbService } from '../services/tmdb/tmdb.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
+import { MovieCrudService } from '../services/movie/movie-crud.service';
+
 
 
 @Component({
@@ -27,7 +29,9 @@ export class MovieListComponent {
 
   currentCategory: string = '';
 
-  constructor(private tmdbService: TmdbService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private tmdbService: TmdbService,
+    private route: ActivatedRoute, private router: Router,
+    private movieCrudService: MovieCrudService) { }
 
 
   ngOnInit(): void {
@@ -75,11 +79,13 @@ export class MovieListComponent {
   }
 
   async loadFavoriteMovies(page: number) {
+    this.movies = this.movieCrudService.getFavorites();
   }
 
   async loadWatchlistMovies(page: number) {
-
+    this.movies = this.movieCrudService.getWatchlist();
   }
+
 
   private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
     const response = await this.tmdbService.getMovies(url, { page, ...queryParams });

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
+import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -8,6 +9,9 @@ import { Movie } from 'src/app/model/movie.model';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
+
+  constructor(private movieCrudService: MovieCrudService) { }
+
 
   formatBrazilianDate(date: string): string {
     const newDate = new Date(date);
@@ -19,5 +23,14 @@ export class MovieCardComponent {
 
   formatStarAverageValue(value: number): number {
     return Math.round(value * 10) / 10;
+  }
+
+
+  addMovieToFavorites(movie: any) {
+    this.movieCrudService.addToFavorites(movie);
+  }
+
+  addMovieToWatchlist(movie: any) {
+    this.movieCrudService.addToWatchlist(movie);
   }
 }

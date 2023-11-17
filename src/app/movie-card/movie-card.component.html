@@ -7,21 +7,26 @@
       />
 
       <div class="bookmark-container">
-        <a class="bookmark-btn">
+        <a class="bookmark-btn" (click)="addMovieToWatchlist(movie)">
           <i class="material-icons book-add-icons">bookmark_border</i>
         </a>
       </div>
 
       <div class="fab-container">
-        <a class="btn-floating halfway-fab-custom waves-effect waves-light red">
+        <a
+          class="btn-floating halfway-fab-custom waves-effect waves-light red"
+          (click)="addMovieToFavorites(movie)"
+        >
           <i class="material-icons">favorite_border</i>
         </a>
       </div>
-
     </div>
 
     <div class="card-content general-text black">
-      <p class="card-title truncate-title movie-title" title="{{ movie.title }}">
+      <p
+        class="card-title truncate-title movie-title"
+        title="{{ movie.title }}"
+      >
         {{ movie.title }}
       </p>
       <p class="release-date mt-5">
