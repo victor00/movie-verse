@@ -1,15 +1,17 @@
-
+<div>
   <div class="row">
     <app-search></app-search>
     <div class="col s10 m3 center" *ngFor="let movie of movies">
-      <app-movie-card [movie]="movie"
-                (updateFavorites)="handleFavoriteUpdate(movie)"
-                (updateWatchlist)="handleWatchlistUpdate(movie)">
+      <app-movie-card
+        [movie]="movie"
+        (updateFavorites)="handleFavoriteUpdate(movie)"
+        (updateWatchlist)="handleWatchlistUpdate(movie)"
+      >
       </app-movie-card>
     </div>
   </div>
 
-  <div *ngIf="totalPages > 1" class="pagination">
+  <div *ngIf="showPagination && totalPages > 1" class="pagination">
     <app-pagination
       [currentPage]="currentPage"
       [totalPages]="totalPages"
@@ -17,3 +19,4 @@
     >
     </app-pagination>
   </div>
+</div>

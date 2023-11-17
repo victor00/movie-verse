@@ -5,8 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { MovieCrudService } from '../services/movie/movie-crud.service';
 
-
-
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -18,6 +16,7 @@ export class MovieListComponent {
   movies: Movie[] = [];
   currentPage: number = 1;
   totalPages: number = 0;
+  showPagination = true;
 
   private categoryLoadFunctions: { [key: string]: (page: number) => Promise<void> } = {
     popular: (page: number) => this.loadPopularMovies(page),
@@ -78,11 +77,13 @@ export class MovieListComponent {
   }
 
   async loadFavoriteMovies(page: number) {
-    this.movies = this.movieCrudService.getFavorites();
+    this.movies = await this.movieCrudService.getFavorites();
+    this.showPagination = false;
   }
 
   async loadWatchlistMovies(page: number) {
-    this.movies = this.movieCrudService.getWatchlist();
+    this.movies = await this.movieCrudService.getWatchlist();
+    this.showPagination = false;
   }
 
   async handleFavoriteUpdate(movie: Movie) {
@@ -115,5 +116,6 @@ export class MovieListComponent {
     this.movies = response.results;
     this.currentPage = response.page;
     this.totalPages = response.total_pages;
+    this.showPagination = true;
   }
 }
