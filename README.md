@@ -38,7 +38,7 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 - [X] Uso de ngFor - Apresentar uma lista de dados com a diretiva estrutural ngFor
 - [X] Usar a diretiva ngIf
 - [X] Formatação de dados com Pipes
-- [ ] Build e Deploy
+- [X] Build e Deploy
 
 ## Tecnologias
 
