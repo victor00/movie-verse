@@ -50,6 +50,7 @@
     &:hover {
       background-color: white;
       color: red;
+      transform: scale(1.5);
     }
   }
 }
@@ -102,5 +103,15 @@
     &:hover {
       color: gray;
     }
+  }
+}
+
+.favorite-remove-icons {
+  color: red;
+  background-color: whitesmoke;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
   }
 }

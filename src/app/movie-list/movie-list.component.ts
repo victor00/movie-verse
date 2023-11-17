@@ -36,7 +36,6 @@ export class MovieListComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log('Route params:', params);
       if (params['category']) {
         this.currentCategory = params['category'];
         this.loadMovies(this.currentCategory);
@@ -85,7 +84,6 @@ export class MovieListComponent {
   async loadWatchlistMovies(page: number) {
     this.movies = this.movieCrudService.getWatchlist();
   }
-
 
   private async genericLoadMovies(url: string, page: number, queryParams: any = {}) {
     const response = await this.tmdbService.getMovies(url, { page, ...queryParams });

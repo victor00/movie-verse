@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/model/movie.model';
 import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-movie-card',
@@ -10,8 +12,8 @@ import { MovieCrudService } from 'src/app/services/movie/movie-crud.service';
 export class MovieCardComponent {
   @Input() movie!: Movie;
 
-  constructor(private movieCrudService: MovieCrudService) { }
-
+  constructor(private movieCrudService: MovieCrudService, private router: Router,
+    private route: ActivatedRoute) { }
 
   formatBrazilianDate(date: string): string {
     const newDate = new Date(date);
@@ -26,11 +28,29 @@ export class MovieCardComponent {
   }
 
 
-  addMovieToFavorites(movie: any) {
-    this.movieCrudService.addToFavorites(movie);
+  isInFavorites(movie: Movie): boolean {
+    const favorites = this.movieCrudService.getFavorites();
+    return favorites.some((favMovie: Movie) => favMovie.id === movie.id);
   }
 
-  addMovieToWatchlist(movie: any) {
-    this.movieCrudService.addToWatchlist(movie);
+  isInWatchlist(movie: Movie): boolean {
+    const watchlist = this.movieCrudService.getWatchlist();
+    return watchlist.some((watchMovie: Movie) => watchMovie.id === movie.id);
+  }
+
+  toggleFavorites(movie: Movie) {
+    if (this.isInFavorites(movie)) {
+      this.movieCrudService.removeFromFavorites(movie);
+    } else {
+      this.movieCrudService.addToFavorites(movie);
+    }
+  }
+
+  toggleWatchlist(movie: Movie) {
+    if (this.isInWatchlist(movie)) {
+      this.movieCrudService.removeFromWatchlist(movie);
+    } else {
+      this.movieCrudService.addToWatchlist(movie);
+    }
   }
 }
