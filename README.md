@@ -34,7 +34,7 @@ MovieVerse é uma aplicação web projetada para controlar e organizar sua cole�
 - [X] Validação de campos de formulário com REGEX e apresentar os erros.
 - [X] Desabilitar o botão de submit enquanto o formulário está inválido.
 - [X] Tratamento de requisições a API com Promises ou Observables
-- [ ] Cadastro de entidade no JSON Server
+- [X] Cadastro de entidade no JSON Server
 - [X] Uso de ngFor - Apresentar uma lista de dados com a diretiva estrutural ngFor
 - [X] Usar a diretiva ngIf
 - [ ] Formatação de dados com Pipes
