@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Movie } from 'src/app/model/movie.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ export class MovieCrudService {
 
   addToFavorites(movie: any) {
     let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    movie.id = this.getNextId();
     favorites.push(movie);
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
@@ -21,6 +24,7 @@ export class MovieCrudService {
 
   addToWatchlist(movie: any) {
     let watchlist = JSON.parse(localStorage.getItem('watchlist') || '[]');
+    movie.id = this.getNextId();
     watchlist.push(movie);
     localStorage.setItem('watchlist', JSON.stringify(watchlist));
   }
@@ -51,6 +55,7 @@ export class MovieCrudService {
 
   addToFormMovies(movie: any) {
     let formMovies = JSON.parse(localStorage.getItem('formMovies') || '[]');
+    movie.id = this.getNextId();
     formMovies.push(movie);
     localStorage.setItem('formMovies', JSON.stringify(formMovies));
   }
@@ -63,5 +68,17 @@ export class MovieCrudService {
     let formMovies = this.getFormMovies();
     formMovies = formMovies.filter((formMovie: any) => formMovie.id !== movie.id);
     localStorage.setItem('formMovies', JSON.stringify(formMovies));
+  }
+
+  private getNextId(): number {
+    // Get the highest ID from all lists
+    let highestId = Math.max(
+      ...this.getFavorites().map((movie: Movie) => movie.id || 0),
+      ...this.getWatchlist().map((movie: Movie) => movie.id || 0),
+      ...this.getFormMovies().map((movie: Movie) => movie.id || 0)
+    );
+
+    // Return the next ID
+    return highestId + 1;
   }
 }

@@ -19,7 +19,7 @@ export class MovieFormComponent implements OnInit {
   ngOnInit(): void {
     this.movieForm = this.fb.group({
       title: ['', Validators.required],
-      release_date: ['', [Validators.required, Validators.pattern(/^\d{2}\/\d{2}\/\d{4}$/)]], // regex for DD/MM/YYYY
+      release_date: ['', Validators.required],
       vote_average: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
     });
 
