@@ -56,7 +56,7 @@
 
       <p class="star-vote-average">
         <i class="material-icons">star</i>
-        <span>{{ formatStarAverageValue(movie.vote_average) }}</span>
+        <span>{{ movie.vote_average | round }}</span>
       </p>
     </div>
   </div>
