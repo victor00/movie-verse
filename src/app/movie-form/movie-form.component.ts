@@ -18,7 +18,7 @@ export class MovieFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieForm = this.fb.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required, Validators.pattern(/.{3,}/)]],
       release_date: ['', Validators.required],
       vote_average: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
     });

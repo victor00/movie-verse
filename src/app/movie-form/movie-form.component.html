@@ -5,7 +5,7 @@
       <label class="text-orange" for="title">Título:</label>
       <input type="text" id="title" formControlName="title">
       <div *ngIf="movieForm.get('title')?.invalid && movieForm.get('title')?.touched">
-        <span class="error">Título é obrigatório.</span>
+        <span class="error">Título é obrigatório. No mínimo 3 caracteres</span>
       </div>
     </div>
 
