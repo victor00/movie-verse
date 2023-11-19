@@ -11,7 +11,7 @@
 
     <div>
       <label class="text-orange" for="release_date">Data de lançamento:</label>
-      <input type="text" id="release_date" formControlName="release_date" mask="00/00/0000">
+      <input type="text" id="release_date" formControlName="release_date" mask="00/00/0000" [dropSpecialCharacters]="false">
       <div *ngIf="movieForm.get('release_date')?.invalid && movieForm.get('release_date')?.touched">
         <span class="error">Data de lançamento inválida ou obrigatória.</span>
       </div>
